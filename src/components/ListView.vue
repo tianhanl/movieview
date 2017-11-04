@@ -2,9 +2,16 @@
     <div class="list-view">
         <h2 class="list-title">Top Rated Movie</h2>
             <div class="list-container">
-                <div class="list-item" v-for="movie in movieList" :key="movie.id">
+                <movie-card class="list-item"
+                            v-for="movie in movieList"
+                            :movieName="movie.title"
+                            :movieDate="movie.release_date"
+                            :movieGenres="movie.genre_ids"
+                            :movieDescription="movie.overview"
+                            :imageSrc="movie.poster_path"
+                            :key="movie.id">
                     {{movie.title}}
-                </div>
+                </movie-card>
             </div>
             <mu-pagination class="list-pagination" :totla="totalPage" :current="currPage" @pageChange="handlePageChange"></mu-pagination>
     </div>
@@ -13,9 +20,12 @@
     import api from '../api';
     import anime from 'animejs';
     import MuFlexboxItem from "../../node_modules/muse-ui/src/flexbox/flexboxItem.vue";
+    import MovieCard from './MovieCard.vue'
     export default {
       components: {
-        MuFlexboxItem},
+        MuFlexboxItem,
+        MovieCard
+      },
       name: 'list-view',
       data() {
         return {
@@ -467,13 +477,13 @@
         }
         .list-container {
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
             flex-wrap: wrap;
             margin: 1em 0 1em;
             width: 100%;
         }
         .list-item {
-            flex: 1 0 30%;
+            flex: 0 0 300px;
         }
     }
 

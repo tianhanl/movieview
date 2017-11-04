@@ -12,6 +12,8 @@
     "animejs": "^2.2.0",
     "axios": "^0.17.0",
     "knex": "^0.13.0",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
     "muse-ui": "^2.1.0",
     "mysql": "^2.15.0",
     "style-loader": "^0.19.0",

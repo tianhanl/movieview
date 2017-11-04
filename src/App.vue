@@ -1,9 +1,12 @@
 <template>
   <div id="app">
     <header>
-      <h1>Movie</h1>
+      <h1><router-link to="/">Movie</router-link></h1>
     </header>
-    <router-view></router-view>
+    <router-view class="full-page-content"></router-view>
+    <footer>
+      Developed by <a href="https://github.com/tianhanl">TL</a>
+    </footer>
   </div>
 </template>
 
@@ -19,5 +22,26 @@ export default {
 </script>
 
 <style lang="scss">
+
+  header {
+    h1 {
+      text-align: center;
+    }
+  }
+
+  footer {
+    text-align: center;
+    padding: 1em;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    .full-page-content {
+      flex: 1 0 90%;
+    }
+  }
 
 </style>

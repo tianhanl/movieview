@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <h1></h1>
+    <header>
+      <h1>Movie</h1>
+    </header>
     <router-view></router-view>
   </div>
 </template>

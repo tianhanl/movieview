@@ -5,7 +5,11 @@ import actions from './actions';
 
 Vue.use(Vuex);
 
-const state = {};
+const state = {
+  pageList: [],
+  currPage: 1,
+  totalPage: 1,
+};
 
 const getters = {};
 

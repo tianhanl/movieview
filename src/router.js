@@ -6,8 +6,12 @@ Vue.use(Router);
 
 const routes = [
   {
-    name: 'list',
     path: '/',
+    redirect: '/list/1',
+  },
+  {
+    name: 'list',
+    path: '/list/:page',
     component: ListView,
     meta: {
       title: 'Top Rated Movie List | Noir',

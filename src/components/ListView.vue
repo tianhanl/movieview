@@ -4,6 +4,7 @@
             <div class="list-container">
                 <movie-card class="list-item"
                             v-for="movie in movieList"
+                            :movieID="movie.id"
                             :movieName="movie.title"
                             :movieDate="movie.release_date"
                             :movieGenres="movie.genre_ids"
@@ -467,8 +468,11 @@
 </script>
 <style lang="scss">
     .list-view {
-        padding: 1em;
+        padding: 1em 1em;
+        max-width: 980px;
+        margin: auto;
         .list-title {
+            font-size: 2.5em;
         }
         .list-pagination {
             overflow: hidden;
@@ -477,13 +481,14 @@
         }
         .list-container {
             display: flex;
-            justify-content: space-around;
+            justify-content: flex-start;
             flex-wrap: wrap;
             margin: 1em 0 1em;
             width: 100%;
         }
         .list-item {
             flex: 0 0 300px;
+            margin-right: 1em;
         }
     }
 

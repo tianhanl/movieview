@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import ListView from './components/ListView.vue';
+import DetailView from './components/DetailView.vue';
 
 Vue.use(Router);
 
@@ -15,6 +16,15 @@ const routes = [
     component: ListView,
     meta: {
       title: 'Top Rated Movie List | Noir',
+    },
+
+  },
+  {
+    name: 'detail',
+    path: '/detail/:id',
+    component: DetailView,
+    meta: {
+      title: 'Movie Detail | Noir',
     },
   },
 ];

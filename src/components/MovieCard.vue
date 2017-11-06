@@ -1,8 +1,8 @@
 <template>
     <mu-card class="movie-card">
         <mu-card-media>
-            <img :src="posterAddress" alt="movie poster"/>
-            <p class="movie-card-description">
+            <img  :src="posterAddress" alt="movie poster"/>
+            <p v-on:click="handlePosterClick" class="movie-card-description">
                 {{movieDescription}}
             <p/>
         </mu-card-media>
@@ -22,9 +22,10 @@
     export default {
       name: 'movie-card',
       props: {
+        movieID: Number,
         movieName: String,
         movieDate: String,
-        movieGenres: [],
+        movieGenres: Array,
         movieDescription: String,
         imageSrc: String,
       },
@@ -35,12 +36,20 @@
         posterAddress() {
           return 'https://image.tmdb.org/t/p/w500/'+this.imageSrc;
         }
+      },
+      methods: {
+        handlePosterClick: function() {
+          console.log('clicked');
+            this.$router.push({name: 'detail', params: {
+              id:this.movieID
+          }})
+        }
       }
     }
 </script>
 <style lang="scss">
     .movie-card {
-        margin: 0.5em;
+        margin: 0.5em 0;
 
         .mu-card-media {
             overflow: hidden;

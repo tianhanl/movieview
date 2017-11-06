@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <h1><router-link to="/">Movie</router-link></h1>
+      <h1><router-link to="/">Noir</router-link></h1>
     </header>
     <router-view class="full-page-content"></router-view>
     <footer>
@@ -22,6 +22,9 @@ export default {
 </script>
 
 <style lang="scss">
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
 
   header {
     h1 {

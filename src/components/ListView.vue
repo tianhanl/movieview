@@ -1,7 +1,9 @@
 <template>
     <div class="list-view">
+
         <h2 class="list-title">Top Rated Movie</h2>
-            <div class="list-container">
+        <transition :name="transition" mode="out-in">
+            <div class="list-container" :key="currPage">
                 <movie-card class="list-item"
                             v-for="movie in movieList"
                             :movieID="movie.id"
@@ -14,7 +16,8 @@
                     {{movie.title}}
                 </movie-card>
             </div>
-            <mu-pagination class="list-pagination" :total="totalPage" :current="currPage" @pageChange="handlePageChange"></mu-pagination>
+        </transition>
+        <mu-pagination class="list-pagination" :total="totalPage" :current="currPage" @pageChange="handlePageChange"></mu-pagination>
     </div>
 </template>
 <script>
@@ -31,6 +34,7 @@
       data() {
         return {
           movieList:  [],
+          transition: 'slide-right',
         };
       },
       computed: {
@@ -52,6 +56,8 @@
         // will be reused, and this hook will be called when that happens.
         // has access to `this` component instance.
         this.updatePage(to.params.page);
+        this.transition = to.params.page>from.params.page?'slide-left':'slide-right';
+        console.log(this.transition);
         next();
       },
       methods: {
@@ -68,7 +74,6 @@
           if(this.$store.state.pageList[this.currPage]) {
                 this.movieList = this.$store.state.pageList[this.currPage];
           } else {
-            console.log(this.currPage);
             api.getTopRatedMovies(this.currPage)
               .then(response => {
                 let data = response.data;
@@ -82,7 +87,7 @@
                 console.log(e);
             })
           }
-        }
+        },
       }
     }
 
@@ -111,6 +116,17 @@
             flex: 0 0 300px;
             margin-right: 1em;
         }
+    }
+
+    .slide-left-enter, .slide-right-leave-to {
+        transition: all .3s cubic-bezier(.55,0,.1,1);
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    .slide-left-leave-to, .slide-right-enter {
+        transition: all .5s cubic-bezier(.55,0,.1,1);
+        opacity: 0;
+        transform: translateX(-30px);
     }
 
 </style>

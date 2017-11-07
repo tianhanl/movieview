@@ -54,6 +54,9 @@
         .mu-card-media {
             overflow: hidden;
             position: relative;
+            img {
+                height: 441px;
+            }
         }
 
         .movie-card-description {

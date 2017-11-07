@@ -29,6 +29,10 @@ export default {
   header {
     h1 {
       text-align: center;
+      font-size: 3em;
+    }
+    a {
+      color: #484B4F;
     }
   }
 
@@ -41,7 +45,6 @@ export default {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-
     .full-page-content {
       flex: 1 0 90%;
     }

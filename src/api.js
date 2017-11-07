@@ -6,7 +6,6 @@ const movieAPIDomain = 'https://api.themoviedb.org/3';
 // page minimum 1, maximum 1000
 const getTopRatedMovies = function (page) {
   const topRatedAPI = `/movie/top_rated?api_key=${credential.apiKey}&page=${page}`;
-  console.log(topRatedAPI);
   return axios.get(movieAPIDomain + topRatedAPI);
 };
 

@@ -27,12 +27,13 @@ export default {
   }
 
   header {
+    background: #4A4A4A;
     h1 {
       text-align: center;
       font-size: 3em;
     }
     a {
-      color: #484B4F;
+      color: #FFF;
     }
   }
 

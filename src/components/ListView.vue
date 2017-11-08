@@ -1,7 +1,5 @@
 <template>
     <div class="list-view">
-
-        <h2 class="list-title">Top Rated Movie</h2>
         <transition :name="transition" mode="out-in">
             <transition-group class="list-container" tag="ul" name="staggered-fade"
                               :css="false"

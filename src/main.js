@@ -1,13 +1,16 @@
 /* eslint-disable no-new */
 import Vue from 'vue';
 import MuseUI from 'muse-ui';
+import VueLazyLoad from 'vue-lazyload';
 import 'muse-ui/dist/muse-ui.css';
 import 'muse-ui/dist/theme-carbon.css';
 import App from './App.vue';
 import router from './router';
 import store from './store';
 
+
 Vue.use(MuseUI);
+Vue.use(VueLazyLoad);
 
 new Vue({
   router,

@@ -5,12 +5,12 @@ const app = express();
 
 app.set('port', process.env.PORT || 3000);
 // eslint-disable-next-line no-undef
-app.use(express.static(path.join(_dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.get('/', (req, res) => {
   res.type('.html');
   // eslint-disable-next-line no-undef
-  res.sendFile(`${_dirname}/index.html`);
+  res.sendFile(`${__dirname}/index.html`);
 });
 
 app.use((req, res) => {

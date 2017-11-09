@@ -5,7 +5,7 @@ const app = express();
 
 app.set('port', process.env.PORT || 3000);
 // eslint-disable-next-line no-undef
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'movieview/dist')));
 
 app.get('/', (req, res) => {
   res.type('.html');

@@ -1,13 +1,14 @@
 const express = require('express');
 const path = require('path');
+const history = require('connect-history-api-fallback');
 
 const app = express();
-
 app.set('port', process.env.PORT || 3000);
 // eslint-disable-next-line no-undef
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 app.use(express.static(path.join(__dirname, 'dist')));
 
+app.use(history());
 app.get('/', (req, res) => {
   res.type('.html');
   // eslint-disable-next-line no-undef

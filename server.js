@@ -1,7 +1,10 @@
 const express = require('express');
 const path = require('path');
+const database = require('./src/database');
 
 const app = express();
+
+
 app.set('port', process.env.PORT || 3000);
 // eslint-disable-next-line no-undef
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
@@ -23,6 +26,25 @@ app.get('/detail/:id', (req, res) => {
   res.type('.html');
   // eslint-disable-next-line no-undef
   res.sendFile(`${__dirname}/index.html`);
+});
+
+app.get('/api/movie/top_rated', (req, res) => {
+  const page = Number(req.query.page);
+  database.getTopMovie(page)
+    .then((result) => {
+      const output = {
+        page,
+        results: result,
+        total_results: 100,
+        total_pages: 8,
+      };
+      res.json(output);
+    })
+    .catch((err) => {
+      console.log(err);
+      // eslint-disable-next-line no-undef
+      next();
+    });
 });
 
 app.use((req, res) => {

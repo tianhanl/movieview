@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const history = require('connect-history-api-fallback');
 
 const app = express();
 app.set('port', process.env.PORT || 3000);
@@ -8,8 +7,19 @@ app.set('port', process.env.PORT || 3000);
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.use(history());
 app.get('/', (req, res) => {
+  res.type('.html');
+  // eslint-disable-next-line no-undef
+  res.sendFile(`${__dirname}/index.html`);
+});
+
+app.get('/list/:page', (req, res) => {
+  res.type('.html');
+  // eslint-disable-next-line no-undef
+  res.sendFile(`${__dirname}/index.html`);
+});
+
+app.get('/detail/:id', (req, res) => {
   res.type('.html');
   // eslint-disable-next-line no-undef
   res.sendFile(`${__dirname}/index.html`);

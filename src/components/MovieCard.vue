@@ -7,15 +7,15 @@
             <p/>
         </mu-card-media>
         <mu-card-title :title="movieName" />
-        <mu-card-text>
-            <p class="movie-card-date">
-                {{movieDate}}
-            </p>
-            <p class="movie-card-genres">
-                {{displayGenres}}
-            </p>
+        <!--<mu-card-text>-->
+            <!--<p class="movie-card-date">-->
+                <!--{{movieDate}}-->
+            <!--</p>-->
+            <!--<p class="movie-card-genres">-->
+                <!--{{displayGenres}}-->
+            <!--</p>-->
 
-        </mu-card-text>
+        <!--</mu-card-text>-->
     </mu-card>
 </template>
 <script>
@@ -57,6 +57,11 @@
             img {
                 height: 441px;
             }
+        }
+
+        .mu-card-title {
+            text-align: center;
+            margin-bottom: 0.5em;
         }
 
         .movie-card-description {

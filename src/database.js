@@ -1,8 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import Knex from 'knex';
-import credential from './credential';
+const credential = require('./credential');
 
-const knex = Knex({
+const knex = require('knex')({
   client: 'mysql',
   connection: {
     host: credential.host,
@@ -26,7 +25,7 @@ const getTopMovie = function (page) {
     .innerJoin(
       'movie_genre',
       'top_movies.top_movie_id',
-      'movie_genre.top_movie_id',
+      'movie_genre.top_movie_id'
     )
     .innerJoin('genres', 'movie_genre.genre_id', 'genres.genre_id')
     .groupBy('top_movies.title')
@@ -42,10 +41,10 @@ const getTopMovie = function (page) {
       'release_date',
       'vote_count',
       'popularity',
-      knex.raw('GROUP_CONCAT(genre) genreList'),
+      knex.raw('GROUP_CONCAT(genre) genreList')
     );
 };
 
-export default {
+module.exports = {
   getTopMovie,
 };

@@ -25,7 +25,7 @@ const getTopMovie = function (page) {
     .innerJoin(
       'movie_genre',
       'top_movies.top_movie_id',
-      'movie_genre.top_movie_id'
+      'movie_genre.top_movie_id',
     )
     .innerJoin('genres', 'movie_genre.genre_id', 'genres.genre_id')
     .groupBy('top_movies.title')
@@ -41,7 +41,7 @@ const getTopMovie = function (page) {
       'release_date',
       'vote_count',
       'popularity',
-      knex.raw('GROUP_CONCAT(genre) genreList')
+      knex.raw('GROUP_CONCAT(genre) genreList'),
     );
 };
 

@@ -19,7 +19,7 @@
                 </movie-card>
             </transition-group>
         </transition>
-        <mu-pagination class="list-pagination" :total="totalPage" :current="currPage" @pageChange="handlePageChange"></mu-pagination>
+        <mu-pagination class="list-pagination" :total="totalMovie" :pageSize="pageSize" :current="currPage" @pageChange="handlePageChange" ></mu-pagination>
     </div>
 </template>
 <script>
@@ -37,14 +37,15 @@
       return {
         movieList:  [],
         transition: 'slide-right',
+        pageSize: 12
       };
     },
     computed: {
       currPage: function () {
         return this.$store.state.currPage;
       },
-      totalPage: function() {
-        return this.$store.state.totalPage;
+      totalMovie: function() {
+        return this.$store.state.totalMovie;
       }
     },
     created() {
@@ -79,7 +80,7 @@
             .then(response => {
               let data = response.data;
               this.movieList = data.results;
-              this.$store.commit('setTotalPage', data.total_pages);
+              this.$store.commit('setTotalMovie', data.total_results);
               this.$store.commit('addPageList', {
                 pos: this.currPage,
                 list: data.results,

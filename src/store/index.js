@@ -8,7 +8,7 @@ Vue.use(Vuex);
 const state = {
   pageList: [],
   currPage: 1,
-  totalPage: 1,
+  totalMovie: 100,
 };
 
 const getters = {};

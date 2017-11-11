@@ -80,6 +80,7 @@
             .then(response => {
               let data = response.data;
               this.movieList = data.results;
+              console.log(this.movieList);
               this.$store.commit('setTotalMovie', data.total_results);
               this.$store.commit('addPageList', {
                 pos: this.currPage,

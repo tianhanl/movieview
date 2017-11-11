@@ -6,7 +6,7 @@ const serverAPIDomain = 'http://ec2-18-216-86-71.us-east-2.compute.amazonaws.com
 // page minimum 1, maximum 1000
 const getTopRatedMovies = function (page) {
   const topRatedAPI = `/movie/top_rated?api_key=${credential.apiKey}&page=${page}`;
-  return axios.get(serverAPIDomain + topRatedAPI);
+  return axios.get(movieAPIDomain + topRatedAPI);
 };
 
 const getMovieDetail = function (movieID) {

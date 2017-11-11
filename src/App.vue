@@ -2,7 +2,7 @@
   <div id="app">
     <header>
       <h1><router-link to="/">Noir</router-link></h1>
-      <h2><router-link to="/data">data</router-link></h2>
+      <h2><router-link to="/data"></router-link></h2>
     </header>
     <router-view class="full-page-content"></router-view>
     <footer>
@@ -29,8 +29,8 @@ export default {
 
   header {
     background: #4A4A4A;
-    text-align: center;
     h1 {
+      text-align: center;
       font-size: 3em;
     }
     a {
@@ -49,6 +49,7 @@ export default {
     min-height: 100vh;
     .full-page-content {
       flex: 1 0 90%;
+      padding: 0;
     }
   }
 

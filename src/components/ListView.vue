@@ -118,6 +118,7 @@
         padding: 1em 1em;
         max-width: 980px;
         margin: auto;
+        overflow: hidden;
         .list-title {
             font-size: 2.5em;
         }
@@ -131,15 +132,26 @@
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
-            margin: 1em 0 1em;
+            margin: 1em auto;
             padding: 0;
             width: 100%;
+            @media screen and (max-width: 768px) {
+                justify-content: center;
+                align-items: center;
+            }
         }
         .list-item {
-            flex: 0 0 300px;
-            margin-right: 1em;
+            flex: 0 0 280px;
+            margin: 1em;
             /*opacity: 0;*/
             transition: all .2s $standard-timing-function;
+            @media screen and (max-width: 768px) {
+                margin: 1em 0.5em;
+                flex: 0 0 300px;
+            }
+            &:hover {
+                box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+            }
         }
         .list-item.active {
             /*opacity: 1;*/

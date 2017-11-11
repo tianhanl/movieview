@@ -32,12 +32,14 @@ app.get('/api/movie/top_rated', (req, res) => {
   const page = req.query.page;
   database.getTopMovie(page)
     .then((result) => {
+    console.log(result);
       const output = {
         page,
         results: result,
         total_results: 100,
         total_pages: 8,
       };
+      console.log(output);
       res.json(output);
     })
     .catch((err) => {

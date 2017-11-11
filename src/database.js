@@ -21,11 +21,12 @@ const getTopMovie = function (page = 1) {
   }
   let offsetNumber = (page - 1) * pageItemNumber;
   if (offsetNumber > itemCount) offsetNumber = itemCount;
-  return (knex('top_movies').innerJoin(
-    'movie_genre',
-    'top_movies.top_movie_id',
-    'movie_genre.top_movie_id'
-  )
+  return knex('top_movies')
+    .innerJoin(
+      'movie_genre',
+      'top_movies.top_movie_id',
+      'movie_genre.top_movie_id'
+    )
     .innerJoin('genres', 'movie_genre.genre_id', 'genres.genre_id')
     .groupBy('top_movies.title')
     .orderBy('top_movies.top_movie_id')
@@ -41,8 +42,9 @@ const getTopMovie = function (page = 1) {
       'vote_count',
       'popularity',
       knex.raw('GROUP_CONCAT(genre) genreList')
-    ));
+    );
 };
+
 
 module.exports = {
   getTopMovie,

@@ -1,7 +1,7 @@
 <template>
     <mu-card class="movie-card">
         <mu-card-media>
-            <img  v-lazy="posterAddress" alt="movie poster"/>
+            <img  :src="posterAddress" alt="movie poster"/>
             <p v-on:click="handlePosterClick" class="movie-card-description">
                 {{movieDescription}}
             <p/>

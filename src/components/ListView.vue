@@ -17,7 +17,7 @@
                             :data-index="index">
                     {{movie.title}}
                 </movie-card>
-            </transition-group>
+            </transition-group>x
         </transition>
         <mu-pagination class="list-pagination" :total="totalMovie" :pageSize="pageSize" :current="currPage" @pageChange="handlePageChange" ></mu-pagination>
     </div>

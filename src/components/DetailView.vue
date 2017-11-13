@@ -123,6 +123,7 @@
         flex: 1 1 400px;
         max-width: 460px;
         padding: 0 1em;
+        color: white;
         @media (max-width:  768px){
             width: 90%;
         }

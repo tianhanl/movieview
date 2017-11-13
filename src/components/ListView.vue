@@ -119,43 +119,50 @@
         max-width: 980px;
         margin: auto;
         overflow: hidden;
-        .list-title {
-            font-size: 2.5em;
+        @media screen and (max-width: 768px) {
+            padding:0;
         }
-        .list-pagination {
-            overflow: hidden;
-            width: fit-content;
-            margin: auto;
+        ul {
+            margin: 0;
         }
-        .list-container {
-            min-height: 80vh;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin: 1em auto;
-            padding: 0;
-            width: 100%;
-            @media screen and (max-width: 768px) {
-                justify-content: center;
-                align-items: center;
-            }
+    }
+
+    .list-title {
+        font-size: 2.5em;
+    }
+    .list-pagination {
+        overflow: hidden;
+        width: fit-content;
+        margin: auto;
+    }
+    .list-container {
+        min-height: 80vh;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 1em 0;
+        padding: 1em 0;
+        @media screen and (max-width: 768px) {
+            justify-content: center;
+            align-items: center;
+            align-content: center;
         }
-        .list-item {
-            flex: 0 0 280px;
-            margin: 1em;
-            /*opacity: 0;*/
-            transition: all .2s $standard-timing-function;
-            @media screen and (max-width: 768px) {
-                margin: 1em 0.5em;
-                flex: 0 0 300px;
-            }
-            &:hover {
-                box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-            }
+    }
+    .list-item {
+        flex: 0 0 280px;
+        margin: 1em;
+        /*opacity: 0;*/
+        transition: all .2s $standard-timing-function;
+        @media screen and (max-width: 768px) {
+            margin: 1em 0.5em;
+            flex: 0 0 300px;
         }
-        .list-item.active {
-            /*opacity: 1;*/
+        &:hover {
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
         }
+    }
+    .list-item.active {
+        /*opacity: 1;*/
     }
     .slide-left-enter {
         transition: all .2s $deceleration-timing-function;

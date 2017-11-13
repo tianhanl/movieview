@@ -1,10 +1,10 @@
 <template>
-    <mu-card class="movie-card">
+    <mu-card v-on:click.native="handlePosterClick" class="movie-card">
         <mu-card-media>
             <img  :src="posterAddress" alt="movie poster"/>
-            <p v-on:click="handlePosterClick" class="movie-card-description">
-                {{movieDescription}}
-            <p/>
+            <!--<p class="movie-card-description">-->
+                <!--{{movieDescription}}-->
+            <!--<p/>-->
         </mu-card-media>
         <mu-card-title :title="movieName" />
         <!--<mu-card-text>-->
@@ -50,28 +50,18 @@
 <style lang="scss">
     .movie-card {
         margin: 0.5em 0;
-
-        .mu-card-media {
-            overflow: hidden;
-            position: relative;
-            img {
-                height: 441px;
-            }
+    }
+    .mu-card-media {
+        overflow: hidden;
+        position: relative;
+        img {
+            height: 441px;
         }
+    }
 
-        .mu-card-title {
-            text-align: center;
-            margin-bottom: 0.5em;
-        }
-
-        .movie-card-description {
-            position: absolute;
-            top: 0;
-            left:0;
-            right:0;
-            bottom: 0;
-            opacity: 0;
-        }
+    .mu-card-title {
+        text-align: center;
+        margin-bottom: 0.5em;
     }
 
 </style>

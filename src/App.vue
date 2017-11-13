@@ -30,11 +30,21 @@ export default {
   header {
     background: #4A4A4A;
     text-align: center;
+    position: relative;
     h1 {
       font-size: 3em;
     }
     a {
       color: #FFF;
+    }
+    &::after {
+      content: '.';
+      height: 50vh;
+      width: 100%;
+      position: absolute;
+      background: #4A4A4A;
+      bottom: -49vh;
+      left: 0;
     }
   }
 
@@ -47,10 +57,13 @@ export default {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    .full-page-content {
-      flex: 1 0 90%;
-      padding: 0;
-    }
+  }
+
+  .full-page-content {
+    flex: 1 0 90%;
+    padding: 0;
+    margin: 0;
+    position: relative;
   }
 
 </style>

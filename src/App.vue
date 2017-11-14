@@ -72,6 +72,10 @@ export default {
       h1 {
         margin-right: 1.5em;
       }
+      &::after {
+        height: 40vh;
+        bottom: -39vh;
+      }
     }
   }
 

@@ -138,7 +138,7 @@
     .list-container {
         min-height: 80vh;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         flex-wrap: wrap;
         margin: 1em 0;
         padding: 1em 0;

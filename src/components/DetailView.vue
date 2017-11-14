@@ -126,6 +126,7 @@
         color: white;
         @media (max-width:  768px){
             width: 90%;
+            color:#4A4A4A;
         }
     }
     .detail-view-info-title {

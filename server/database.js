@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const credential = require('./credential');
+const credential = require('../src/credential');
 
 const knex = require('knex')({
   client: 'mysql',

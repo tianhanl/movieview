@@ -17,9 +17,9 @@
                             :data-index="index">
                     {{movie.title}}
                 </movie-card>
-            </transition-group>
+            </transition-group>x
         </transition>
-        <mu-pagination class="list-pagination" :total="totalPage" :current="currPage" @pageChange="handlePageChange"></mu-pagination>
+        <mu-pagination class="list-pagination" :total="totalMovie" :pageSize="pageSize" :current="currPage" @pageChange="handlePageChange" ></mu-pagination>
     </div>
 </template>
 <script>
@@ -37,14 +37,15 @@
       return {
         movieList:  [],
         transition: 'slide-right',
+        pageSize: 12
       };
     },
     computed: {
       currPage: function () {
         return this.$store.state.currPage;
       },
-      totalPage: function() {
-        return this.$store.state.totalPage;
+      totalMovie: function() {
+        return this.$store.state.totalMovie;
       }
     },
     created() {
@@ -79,7 +80,8 @@
             .then(response => {
               let data = response.data;
               this.movieList = data.results;
-              this.$store.commit('setTotalPage', data.total_pages);
+              console.log(this.movieList);
+              this.$store.commit('setTotalMovie', data.total_results);
               this.$store.commit('addPageList', {
                 pos: this.currPage,
                 list: data.results,
@@ -116,32 +118,51 @@
         padding: 1em 1em;
         max-width: 980px;
         margin: auto;
-        .list-title {
-            font-size: 2.5em;
+        overflow: hidden;
+        @media screen and (max-width: 768px) {
+            padding:0;
         }
-        .list-pagination {
-            overflow: hidden;
-            width: fit-content;
-            margin: auto;
+        ul {
+            margin: 0;
         }
-        .list-container {
-            min-height: 80vh;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin: 1em 0 1em;
-            padding: 0;
-            width: 100%;
+    }
+
+    .list-title {
+        font-size: 2.5em;
+    }
+    .list-pagination {
+        overflow: hidden;
+        width: fit-content;
+        margin: auto;
+    }
+    .list-container {
+        min-height: 80vh;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin: 1em 0;
+        padding: 1em 0;
+        @media screen and (max-width: 768px) {
+            justify-content: center;
+            align-items: center;
+            align-content: center;
         }
-        .list-item {
+    }
+    .list-item {
+        flex: 0 0 280px;
+        margin: 1em;
+        /*opacity: 0;*/
+        transition: all .2s $standard-timing-function;
+        @media screen and (max-width: 768px) {
+            margin: 1em 0.5em;
             flex: 0 0 300px;
-            margin-right: 1em;
-            /*opacity: 0;*/
-            transition: all .2s $standard-timing-function;
         }
-        .list-item.active {
-            /*opacity: 1;*/
+        &:hover {
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
         }
+    }
+    .list-item.active {
+        /*opacity: 1;*/
     }
     .slide-left-enter {
         transition: all .2s $deceleration-timing-function;

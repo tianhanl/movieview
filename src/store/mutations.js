@@ -7,14 +7,14 @@ const setCurrPage = function (state, currPage) {
   state.currPage = currPage;
 };
 
-const setTotalPage = function (state, total) {
-  state.totalPage = total;
+const setTotalMovie = function (state, total) {
+  state.totalMovie = total;
 };
 
 const mutations = {
   addPageList,
   setCurrPage,
-  setTotalPage,
+  setTotalMovie,
 };
 
 export default mutations;

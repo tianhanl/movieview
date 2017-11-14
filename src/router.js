@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import ListView from './components/ListView.vue';
 import DetailView from './components/DetailView.vue';
+import DataView from './components/DataView.vue';
 
 Vue.use(Router);
 
@@ -27,9 +28,18 @@ const routes = [
       title: 'Movie Detail | Noir',
     },
   },
+  {
+    name: 'data',
+    path: '/data',
+    component: DataView,
+    meta: {
+      title: 'Movie Data | Noir',
+    },
+  },
 ];
 
 const router = new Router({
+  mode: 'history',
   routes,
 });
 

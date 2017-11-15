@@ -133,7 +133,12 @@
         font-size: 2.5em;
         margin-bottom: 2rem;
         a {
-            color: #4A4A4A;
+            color: white;
+        }
+        @media (max-width:  768px){
+            a {
+                color: #4A4A4A;
+            }
         }
     }
     .detail-view-info-date {

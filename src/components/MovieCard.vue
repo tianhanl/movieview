@@ -54,6 +54,7 @@
     .mu-card-media {
         overflow: hidden;
         position: relative;
+        background: #4A4A4A;
         img {
             height: 441px;
         }

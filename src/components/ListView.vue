@@ -1,6 +1,5 @@
 <template>
-    <transition name="fade" mode="out-in">
-        <div v-if="received" class="list-view">
+        <div class="list-view">
             <transition :name="transition" mode="out-in">
                 <transition-group class="list-container" tag="ul" name="staggered-fade"
                                   :css="false"
@@ -22,8 +21,6 @@
             </transition>
             <mu-pagination class="list-pagination" :total="totalMovie" :pageSize="pageSize" :current="currPage" @pageChange="handlePageChange" ></mu-pagination>
         </div>
-        <loading v-else></loading>
-    </transition>
 </template>
 <script>
   import api from '../api';
@@ -150,7 +147,7 @@
         margin: 1em 0;
         padding: 1em 0;
         @media screen and (max-width: 768px) {
-            justify-content: center;
+            justify-content: space-around;
             align-items: center;
             align-content: center;
         }

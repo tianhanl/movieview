@@ -17,7 +17,7 @@
                                 :data-index="index">
                         {{movie.title}}
                     </movie-card>
-                </transition-group>x
+                </transition-group>
             </transition>
             <mu-pagination class="list-pagination" :total="totalMovie" :pageSize="pageSize" :current="currPage" @pageChange="handlePageChange" ></mu-pagination>
         </div>
@@ -62,6 +62,7 @@
       // will be reused, and this hook will be called when that happens.
       // has access to `this` component instance.
       this.updatePage(to.params.page);
+      window.scrollTo(0, 0);
       this.transition = to.params.page>from.params.page?'slide-left':'slide-right';
       next();
     },
@@ -168,6 +169,8 @@
     .list-item.active {
         /*opacity: 1;*/
     }
+
+
     .slide-left-enter {
         transition: all .2s $deceleration-timing-function;
         opacity: 0;

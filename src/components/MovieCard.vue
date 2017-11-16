@@ -50,6 +50,8 @@
 <style lang="scss">
     .movie-card {
         margin: 0.5em 0;
+        border-radius: 6px;
+        overflow: hidden;
     }
     .mu-card-media {
         overflow: hidden;
@@ -63,6 +65,7 @@
     .mu-card-title {
         text-align: center;
         margin-bottom: 0.5em;
+        min-height: 3em;
     }
 
 </style>

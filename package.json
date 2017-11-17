@@ -26,6 +26,7 @@
     "vue-chartjs": "^3.0.2",
     "vue-lazyload": "^1.1.4",
     "vue-loading-template": "^0.1.7",
+    "vue-progressive-image": "^2.3.2",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },

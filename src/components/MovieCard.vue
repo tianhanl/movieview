@@ -1,7 +1,10 @@
 <template>
     <mu-card v-on:click.native="handlePosterClick" class="movie-card">
         <mu-card-media>
-            <img  :src="posterAddress" alt="movie poster"/>
+            <progressive-img :src="posterAddress"
+                             :placeholder="lowPosterAddress"
+                             aspect-ratio="1.5"
+            />
             <!--<p class="movie-card-description">-->
                 <!--{{movieDescription}}-->
             <!--<p/>-->
@@ -35,6 +38,9 @@
         },
         posterAddress() {
           return 'https://image.tmdb.org/t/p/w500/'+this.imageSrc;
+        },
+        lowPosterAddress() {
+          return 'https://image.tmdb.org/t/p/w92/'+this.imageSrc;
         }
       },
       methods: {
@@ -56,7 +62,10 @@
     .mu-card-media {
         overflow: hidden;
         position: relative;
-        background: #4A4A4A;
+        figure {
+            margin: 0;
+            padding: 0;
+        }
         img {
             height: 441px;
         }

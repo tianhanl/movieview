@@ -3,7 +3,7 @@
         <mu-card-media>
             <progressive-img :src="posterAddress"
                              :placeholder="lowPosterAddress"
-                             aspect-ratio="1.5"
+                             :aspect-ratio="1.5"
             />
             <!--<p class="movie-card-description">-->
                 <!--{{movieDescription}}-->

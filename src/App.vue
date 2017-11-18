@@ -60,11 +60,11 @@ export default {
     }
     &::after {
       content: '.';
-      height: 50vh;
+      height: 60vh;
       width: 100%;
       position: absolute;
       background: #4A4A4A;
-      bottom: -49vh;
+      bottom: -59vh;
       left: 0;
     }
 

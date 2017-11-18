@@ -1,41 +1,44 @@
 <template>
-    <div class="list-view">
-        <transition :name="transition" mode="out-in">
-            <transition-group class="list-container" tag="ul" name="staggered-fade"
-                              :css="false"
-                              v-on:enter="enter"
-                              :key="currPage">
-                <movie-card class="list-item"
-                            v-for="(movie, index) in movieList"
-                            :movieID="movie.id"
-                            :movieName="movie.title"
-                            :movieDate="movie.release_date"
-                            :movieGenres="movie.genre_ids"
-                            :movieDescription="movie.overview"
-                            :imageSrc="movie.poster_path"
-                            :key="movie.id"
-                            :data-index="index">
-                    {{movie.title}}
-                </movie-card>
-            </transition-group>x
-        </transition>
-        <mu-pagination class="list-pagination" :total="totalMovie" :pageSize="pageSize" :current="currPage" @pageChange="handlePageChange" ></mu-pagination>
-    </div>
+        <div class="list-view">
+            <transition :name="transition" mode="out-in">
+                <transition-group class="list-container" tag="ul" name="staggered-fade"
+                                  :css="false"
+                                  v-on:enter="enter"
+                                  :key="currPage">
+                    <movie-card class="list-item"
+                                v-for="(movie, index) in movieList"
+                                :movieID="movie.id"
+                                :movieName="movie.title"
+                                :movieDate="movie.release_date"
+                                :movieGenres="movie.genre_ids"
+                                :movieDescription="movie.overview"
+                                :imageSrc="movie.poster_path"
+                                :key="movie.id"
+                                :data-index="index">
+                        {{movie.title}}
+                    </movie-card>
+                </transition-group>
+            </transition>
+            <mu-pagination class="list-pagination" :total="totalMovie" :pageSize="pageSize" :current="currPage" @pageChange="handlePageChange" ></mu-pagination>
+        </div>
 </template>
 <script>
   import api from '../api';
   import anime from 'animejs';
   import MuFlexboxItem from "../../node_modules/muse-ui/src/flexbox/flexboxItem.vue";
   import MovieCard from './MovieCard.vue'
+  import loading from './loading.vue'
   export default {
     components: {
       MuFlexboxItem,
-      MovieCard
+      MovieCard,
+      loading
     },
     name: 'list-view',
     data() {
       return {
         movieList:  [],
+        received: false,
         transition: 'slide-right',
         pageSize: 12
       };
@@ -59,6 +62,7 @@
       // will be reused, and this hook will be called when that happens.
       // has access to `this` component instance.
       this.updatePage(to.params.page);
+      window.scrollTo(0, 0);
       this.transition = to.params.page>from.params.page?'slide-left':'slide-right';
       next();
     },
@@ -75,17 +79,18 @@
         this.$store.commit('setCurrPage', Number.parseInt(page));
         if(this.$store.state.pageList[this.currPage]) {
           this.movieList = this.$store.state.pageList[this.currPage];
+          this.received = true;
         } else {
           api.getTopRatedMovies(this.currPage)
             .then(response => {
               let data = response.data;
               this.movieList = data.results;
-              console.log(this.movieList);
               this.$store.commit('setTotalMovie', data.total_results);
               this.$store.commit('addPageList', {
                 pos: this.currPage,
                 list: data.results,
               });
+              this.received = true;
             }).catch(e => {
             console.log(e);
           })
@@ -143,7 +148,7 @@
         margin: 1em 0;
         padding: 1em 0;
         @media screen and (max-width: 768px) {
-            justify-content: center;
+            justify-content: space-around;
             align-items: center;
             align-content: center;
         }
@@ -164,6 +169,8 @@
     .list-item.active {
         /*opacity: 1;*/
     }
+
+
     .slide-left-enter {
         transition: all .2s $deceleration-timing-function;
         opacity: 0;
@@ -183,5 +190,15 @@
         transition: all .2s $deceleration-timing-function;
         opacity: 0;
         transform: translateX(-30px);
+    }
+
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: all 0.3s $standard-timing-function;
+    }
+
+    .fade-enter,
+    .fade-leave-to {
+        opacity: 0;
     }
 </style>

@@ -12,6 +12,11 @@ const routes = [
     redirect: '/list/1',
   },
   {
+    // resolve the domain problem when using on GitHub Pages
+    path: '/movieview/',
+    redirect: '/list/1',
+  },
+  {
     name: 'list',
     path: '/list/:page',
     component: ListView,

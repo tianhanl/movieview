@@ -169,7 +169,11 @@
     .list-item.active {
         /*opacity: 1;*/
     }
-
+    .mu-pagination {
+        @media screen and (max-width: 768px) {
+            font-size: 0.3em;
+        }
+    }
 
     .slide-left-enter {
         transition: all .2s $deceleration-timing-function;
@@ -200,5 +204,24 @@
     .fade-enter,
     .fade-leave-to {
         opacity: 0;
+    }
+    .mu-pagination-svg-icon {
+        @media screen and (max-width: 575px){
+            /*width: 18px;*/
+            /*height: 18px;*/
+            margin: 0;
+        }
+    }
+
+    .mu-pagination-item {
+        @media screen and (max-width: 575px){
+            font-size: 0.9rem;
+            height: 1.5rem;
+            min-width: 1.5rem;
+            padding-left: 6px;
+            padding-right: 6px;
+            line-height: 1.5rem;
+            margin: 0 5px;
+        }
     }
 </style>

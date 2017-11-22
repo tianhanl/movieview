@@ -77,6 +77,13 @@ export default {
         bottom: -39vh;
       }
     }
+
+    @media screen and (max-width: 575px) {
+      h1 {
+        margin-right: 1.2rem;
+        font-size: 2rem;
+      }
+    }
   }
 
   footer {

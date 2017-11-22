@@ -62,6 +62,7 @@
       // will be reused, and this hook will be called when that happens.
       // has access to `this` component instance.
       this.updatePage(to.params.page);
+      // move the page back to top.
       window.scrollTo(0, 0);
       this.transition = to.params.page>from.params.page?'slide-left':'slide-right';
       next();
@@ -78,12 +79,13 @@
       updatePage: function (page) {
         this.$store.commit('setCurrPage', Number.parseInt(page));
         if(this.$store.state.pageList[this.currPage]) {
+          // If the page has been cached, just use it to save time.
           this.movieList = this.$store.state.pageList[this.currPage];
           this.received = true;
         } else {
           api.getTopRatedMovies(this.currPage)
-            .then(response => {
-              let data = response.data;
+            .then(({data}) => {
+            // use destructing to simplify the code
               this.movieList = data.results;
               this.$store.commit('setTotalMovie', data.total_results);
               this.$store.commit('addPageList', {
@@ -106,11 +108,11 @@
 //            easing: [.4, .0, .2, 1],
 //            complete: done
 //          });
-        let delay = el.dataset.index * 30;
-        setTimeout(function() {
-          el.classList.add('active');
-          done();
-        }, delay)
+//        let delay = el.dataset.index * 30;
+//        setTimeout(function() {
+//          el.classList.add('active');
+//          done();
+//        }, delay)
       }
     }
   }

@@ -47,6 +47,7 @@
         },
         formattedMovieDate() {
           let preDate = moment(this.date);
+          // use moment to transform date into desriable format
           if(preDate.isValid()) {
             return preDate.format("MMM DD, YYYY");
           } else {
@@ -63,8 +64,7 @@
           updateDetail() {
             this.received = false;
             api.getMovieDetail(this.movieID)
-              .then(response => {
-                let data = response.data;
+              .then(({data}) => {
                 this.imageSrc = data.poster_path;
                 this.title = data.title;
                 this.date = data.release_date;

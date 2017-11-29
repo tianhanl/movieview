@@ -1822,7 +1822,7 @@ const movieGenre = [];
 movies.forEach((element, index) => {
   element.genre_ids.forEach((id) => {
     movieGenre.push({
-      top_movie_id: index + 1,
+      top_movie_id: 100 + index + 1,
       genre_id: id,
     });
   });

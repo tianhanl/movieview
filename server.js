@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const database = require('./database');
+const database = require('./server/database');
 
 const app = express();
 
@@ -30,7 +30,7 @@ app.get('/detail/:id', (req, res) => {
 
 app.get('/api/movie/top_rated', (req, res) => {
   const page = req.query.page;
-  database.getTopMovie(page)
+  database.getTopMovie(Number.parseInt(page, 10))
     .then((result) => {
       console.log(result);
       const output = {

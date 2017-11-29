@@ -14,7 +14,7 @@ const knex = require('knex')({
 const pageItemNumber = 12;
 const itemCount = 100;
 
-const getTopMovie = function (page = 1) {
+const getTopMovie = function (page) {
   if (typeof page !== 'number') {
     console.log('Page has to be a number');
     return Promise.reject(new Error('Page has to be a number'));
